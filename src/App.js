@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Searchbar from "./components/Searchbar";
 import './App.css';
 
 function App() {
+  const [value, setValue] = useState("");
+  const [lat, setLat] = useState(0);
+  const [lng, setLng] = useState(0);
+
+  const handleSubmit = () => {
+			fetch(
+				"https://geo.ipify.org/api/v1?apiKey=at_4mU7LkMOE5PyVVDuP1GjaJOKCZq1Z&ipAddress=8.8.8.8"
+			)
+				.then((res) => res.json())
+				.then(
+					(result) => {
+            setLat(result["location"]["lat"]);
+						setLng(result["location"]["lng"]);
+					},
+					(error) => {
+						console.log(error);
+					}
+				);
+    };
+  
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+		<div className="App">
+      <Searchbar value={value} onChange={e => { setValue(e) }} handleSubmit={handleSubmit}/>
+      <h1>{value}</h1>
+      <h2>{lat}, {lng}</h2>
+		</div>
+	);
 }
 
 export default App;
