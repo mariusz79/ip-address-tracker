@@ -27,10 +27,9 @@ function App() {
 
 
   return (
-		<div className="App">
+    <div className="App">
+      
       <Searchbar value={value} onChange={e => { setValue(e) }} handleSubmit={handleSubmit}/>
-      <h1>{value}</h1>
-      <h2>{lat}, {lng}</h2>
 		</div>
 	);
 }
