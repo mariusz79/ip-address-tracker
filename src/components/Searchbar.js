@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Hero from './Hero';
 
 const Search = styled.div`
-    cursor: pointer;
     display: flex;
     position: relative;
-    bottom: 150px;
+    bottom: 115vh;
     margin: auto;
     `;
 const Input = styled.input`
@@ -21,14 +19,15 @@ const Input = styled.input`
 	}
 `;
 const Button = styled.button`
+	cursor: pointer;
 	background-color: hsl(0deg 2% 24%);
 	background-image: url("./images/icon-arrow.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 	padding: 10px 25px;
 	border-radius: 0 16px 16px 0;
-    border: none;
-    &:hover,
+	border: none;
+	&:hover,
 	&:focus {
 		outline: none !important;
 		background-color: hsl(0, 0%, 17%);
@@ -38,8 +37,7 @@ const Button = styled.button`
 const Searchbar = (props) => {
 	 
     return (
-        <>
-        <Hero txt="IP Address Tracker"/>
+        
 		<Search>
 			<Input
 				type="text"
@@ -52,7 +50,7 @@ const Searchbar = (props) => {
              
             </Button>
             </Search>
-            </>
+            
 	);
 };
 
