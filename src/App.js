@@ -6,8 +6,8 @@ import './App.css';
 
 function App() {
   const [value, setValue] = useState("");
-  const [lat, setLat] = useState(12.115);
-  const [lng, setLng] = useState(-86.2362);
+  const [lat, setLat] = useState(0);
+  const [lng, setLng] = useState(0);
   const [ipnumber, setIpnumber] = useState("");
   const [location, setLocation] = useState("");
   const [timezone, setTimezone] = useState("");
@@ -38,16 +38,17 @@ function App() {
   }
 
   
-  const getData = (value) => {
+  const getData = () => {
     fetch(
-        `https://geo.ipify.org/api/v1?apiKey=at_4mU7LkMOE5PyVVDuP1GjaJOKCZq1Z&ipAddress=${value}`
-      )
-        .then((res) => res.json())
+      `https://geo.ipify.org/api/v1?apiKey=at_4mU7LkMOE5PyVVDuP1GjaJOKCZq1Z&ipAddress=${value}`
+    )
+      .then((res) => res.json())
 				.then(
           (result) => {
-           						setLat(result["location"]["lat"]);
+            console.log(result);
+           	setLat(result["location"]["lat"]);
             setLng(result["location"]["lng"]);
-            setIpnumber(value);
+            setIpnumber(result["ip"]);
             setIsp(result["isp"]);
             setLocation(result["location"]["city"]);
             setTimezone(`UTC${result["location"]["timezone"]}`);
@@ -66,10 +67,10 @@ function App() {
     : alert('Enter a valid IP adress')
     };
   
-  useEffect(() => {
-    getMyIp();
-    // eslint-disable-next-line
-  }, []);
+useEffect(() => {
+  getMyIp(); 
+  // eslint-disable-next-line
+}, []);
 
   return (
 		<div className="App">
