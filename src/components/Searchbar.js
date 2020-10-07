@@ -3,16 +3,20 @@ import styled from 'styled-components';
 
 const Search = styled.div`
     display: flex;
-    position: relative;
-    bottom: 115vh;
-    margin: auto;
     `;
 const Input = styled.input`
 	font-size: 18px;
 	padding: 15px;
 	width: 500px;
-    border-radius: 16px 0 0 16px;
-    border: none;
+	border-radius: 16px 0 0 16px;
+	border: none;
+	@media (max-width: 730px) {
+		width: 70vw;
+	}
+	@media (max-width: 500px) {
+        width: 80vw;
+        font-size: 12px;
+	}
 	&:focus,
 	&:active {
 		outline: none !important;
