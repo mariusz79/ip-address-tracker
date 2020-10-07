@@ -1,3 +1,39 @@
+## React IP Adress Tracker
+
+>The challenge: to build an IP Address Tracker app and get it looking as close as possible to the design provided by [frontmentor.io](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). To get the IP Address locations, I used the [IP Geolocation API](https://geo.ipify.org/) by IPify. To generate the map, I used [LeafletJS](https://leafletjs.com/).
+
+>Users of the app should be able to:
+- See their own IP Address on the map on the initial page load
+- Search for any IP addresses or domains and see the key information and location
+- View the optimal layout for each page depending on their device's screen size
+- See hover states for all interactive elements on the page
+
+# Front-end Style Guide
+
+## Layout
+
+The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1366px
+
+## Colors
+
+- Very Dark Gray: hsl(0, 0%, 17%)
+- Dark Gray: hsl(0, 0%, 59%)
+
+## Typography
+
+### Body Copy
+
+- Font size (text input): 18px
+
+### Font
+
+- Family: [Rubik](https://fonts.google.com/specimen/Rubik)
+- Weights: 400, 500, 700
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

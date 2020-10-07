@@ -1,16 +1,18 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import Hero from "./components/Hero";
 import Map from './components/Map';
 import './App.css';
+
 
 function App() {
   const [value, setValue] = useState("");
   const [lat, setLat] = useState(12.115);
   const [lng, setLng] = useState(-86.2362);
-  const [ipnumber, setIpnumber] = useState("190.212.90.123");
-  const [location, setLocation] = useState("Managua");
-  const [timezone, setTimezone] = useState("UTC-06:00");
-  const [isp, setIsp] = useState('SpaceX Starlink');
+  const [ipnumber, setIpnumber] = useState("");
+  const [location, setLocation] = useState("");
+  const [timezone, setTimezone] = useState("");
+  const [isp, setIsp] = useState('');
+  const [myIp, setMyIp] = useState("");
 
 
   const isValidIp = (value) =>
@@ -20,10 +22,24 @@ function App() {
 			? true
       : false;
       
+  const getMyIp = () => {
+    fetch("https://api.ipify.org?format=json")
+			.then((res) => res.json())
+			.then(
+				(result) => {
+					setMyIp(result["ip"]);
+					setIpnumber(result["ip"]);
+				},
+				(error) => {
+					console.log(error);
+				}
+			)
+			.then(getData(myIp));
+  }
+
   
-  const handleSubmit = () => {
-    isValidIp(value) ?
-      fetch(
+  const getData = (value) => {
+    fetch(
         `https://geo.ipify.org/api/v1?apiKey=at_4mU7LkMOE5PyVVDuP1GjaJOKCZq1Z&ipAddress=${value}`
       )
         .then((res) => res.json())
@@ -42,11 +58,18 @@ function App() {
 						console.log(error);
 					}
       )
+  }
+
+  const handleSubmit = () => {
+    isValidIp(value) ?
+      getData()
     : alert('Enter a valid IP adress')
     };
   
-
-
+  useEffect(() => {
+    getMyIp();
+    // eslint-disable-next-line
+  }, []);
 
   return (
 		<div className="App">

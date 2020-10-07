@@ -15,7 +15,7 @@ const Input = styled.input`
 	}
 	@media (max-width: 500px) {
         width: 80vw;
-        font-size: 12px;
+        font-size: 15px;
 	}
 	&:focus,
 	&:active {
