@@ -14,9 +14,11 @@ const MapContainer = styled.div`
 	& .leaflet-container {
 		width: 1440px;
 		height: 70vh;
-		z-index: -1;
 		@media (max-width: 1440px) {
 			width: 100vw;
+		}
+		& .leaflet-pane {
+			z-index: 0;
 		}
 	}
 `;

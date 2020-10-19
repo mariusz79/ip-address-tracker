@@ -9,6 +9,7 @@ const Area = styled.div`
 	position: relative;
 	color: #000;
 	margin-top: 2rem;
+	z-index: 1;
 	@media (max-width: 900px) {
 		font-size: 0.7rem;
 	}
